@@ -1,8 +1,68 @@
 //легковой автомобиль
 public class PassengerCar extends Car implements Competable{
+    public enum Body{
+        SEDAN,//Седан
+        HATCHBACK,//Хетчбек
+        COUPE,//Купе
+        UNIVERSAL,//Универсал
+        OFFROAD,//Внедорожник
+        CROSSOVER,//Кроссовер
+        PICKUP,//Пикап
+        VAN,//Фургон
+        MINIVAN//Минивэн
+    }
 
-    public PassengerCar(String brand, String model, float engineVolume) {
+    private Body body;
+
+    public PassengerCar(String brand, String model, float engineVolume, Body body) {
         super(brand, model, engineVolume);
+        this.body=body;
+    }
+
+    public void getBody(){
+        if(body==null){
+            System.out.println("Тип кузова не определен");
+        }else{
+            switch (body){
+                case SEDAN:{
+                    System.out.println("Тип кузова: седан");
+                    break;
+                }
+                case HATCHBACK:{
+                    System.out.println("Тип кузова: Хетчбек");
+                    break;
+                }
+                case COUPE:{
+                    System.out.println("Тип кузова: купе");
+                    break;
+                }
+                case UNIVERSAL:{
+                    System.out.println("Тип кузова: универсал");
+                    break;
+                }
+                case OFFROAD:{
+                    System.out.println("Тип кузова: внедорожник");
+                    break;
+                }
+                case CROSSOVER:{
+                    System.out.println("Тип кузова: кроссовер");
+                    break;
+                }
+                case PICKUP:{
+                    System.out.println("Тип кузова: пикап");
+                    break;
+                }
+                case VAN:{
+                    System.out.println("Тип кузова: фургон");
+                    break;
+                }
+                case MINIVAN:{
+                    System.out.println("Тип кузова: минивэн");
+                    break;
+                }
+            }
+        }
+        System.out.println();
     }
 
     //Метод начать движение
@@ -19,7 +79,7 @@ public class PassengerCar extends Car implements Competable{
 
     @Override
     public String toString(){
-        return "Легковой автомобиль: "+super.toString();
+        return "Легковой автомобиль: " + super.toString();
     }
 
     @Override

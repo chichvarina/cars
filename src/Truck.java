@@ -1,9 +1,39 @@
 //Грузовой автомобиль
 public class Truck extends Car implements Competable{
 
-    public Truck(String brand, String model, float engineVolume) {
-        super(brand, model, engineVolume);
+    public enum CarringCapacity{//грузоподъемность
+        N1,//с полной массой до 3,5 тонн
+        N2,//с полной массой свыше 3,5 до 12 тонн
+        N3;//с полной массой свыше 12 тонн
+
+        private float mass;
     }
+
+    private CarringCapacity carringCapacity;
+
+    public Truck(String brand, String model, float engineVolume, float mass) {
+        super(brand, model, engineVolume);
+        if(mass<=3.5f){
+            this.carringCapacity = CarringCapacity.N1;
+        }else if(mass <=12f){
+            this.carringCapacity = CarringCapacity.N2;
+        }else {
+            this.carringCapacity = CarringCapacity.N3;
+        }
+        carringCapacity.mass=mass;
+    }
+
+    public void getCarringCapacity(){
+        if(carringCapacity == CarringCapacity.N1){
+            System.out.println("Грузоподъемность с полной массой до 3,5 тонн");
+        }else if(carringCapacity == CarringCapacity.N2){
+            System.out.println("Грузоподъемность с полной массой свыше 3,5 до 12 тонн");
+        }else {
+            System.out.println("Грузоподъемность с полной массой свыше 12 тонн");
+        }
+        System.out.println();
+    }
+
 
     //Метод начать движение
     @Override
